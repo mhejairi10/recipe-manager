@@ -1,2 +1,11 @@
-recipe,ingredients,time,instructions,difficuilty
-hummus,"fbehfe,fihefhe",34,"nedkndfe,fejofe",Easy
+Recipe_Name,Ingredients,Prep_Time_Min,Instructions,Difficulty
+Spaghetti Carbonara,"Spaghetti, Eggs, Pecorino Romano, Guanciale, Black Pepper",15,"Boil pasta. Fry guanciale. Whisk eggs and cheese. Combine all off heat.",Medium
+Classic Omelette,"Eggs, Butter, Salt, Pepper, Cheddar Cheese",5,"Whisk eggs. Melt butter in pan. Pour eggs and cook gently. Add cheese and fold.",Easy
+Chicken Stir Fry,"Chicken Breast, Broccoli, Soy Sauce, Garlic, Ginger, Sesame Oil",20,"Slice chicken and veggies. Sear chicken in hot wok. Add vegetables and sauce. Toss until cooked.",Easy
+Beef Wellington,"Beef Tenderloin, Mushroom Duxelles, Prosciutto, Puff Pastry, Egg Wash",60,"Sear beef. Wrap in prosciutto and duxelles. Wrap in pastry. Bake until golden.",Hard
+Avocado Toast,"Sourdough Bread, Avocado, Lemon Juice, Red Pepper Flakes, Salt",5,"Toast the bread. Mash avocado with lemon juice and salt. Spread on toast and garnish.",Easy
+Homemade Margherita Pizza,"Pizza Dough, San Marzano Tomatoes, Fresh Mozzarella, Basil, Olive Oil",45,"Roll out dough. Spread crushed tomatoes. Add mozzarella. Bake at high heat. Top with basil.",Medium
+French Onion Soup,"Yellow Onions, Beef Broth, Gruyere Cheese, Baguette, Butter, Thyme",30,"Slice and caramelize onions slowly. Add broth and simmer. Top with toasted bread and cheese. Broil.",Hard
+Chocolate Chip Cookies,"Flour, Butter, Brown Sugar, Eggs, Chocolate Chips, Vanilla",15,"Cream butter and sugars. Mix in wet ingredients then dry. Fold in chips. Bake at 180°C.",Easy
+Chicken Biryani,"Basmati Rice, Chicken, Yogurt, Onions, Garam Masala, Saffron",40,"Marinate chicken. Parboil rice. Layer chicken and rice in pot. Infuse saffron. Cook on low heat.",Hard
+Berry Smoothie,"Bananas, Strawberries, Blueberries, Greek Yogurt, Honey, Milk",5,"Place all ingredients into a high-speed blender. Blend until completely smooth.",Easy
