@@ -67,7 +67,7 @@ Recipe_Manager/
 ├── app.py
 ├── recipe_manager.py
 ├── utils.py
-├── requirements.txt
+├── Python Project Guidelines.pdf
 └── README.md
 ```
 
