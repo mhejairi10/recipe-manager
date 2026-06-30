@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def search(ingredient):
     """
     Search for all recipes that contain that ingredient
@@ -20,10 +21,10 @@ def search(ingredient):
         df = pd.read_csv('recipe.csv')
         #result containt of all recipe that match the condition
         results = df[
-            df["ingredients"].str.lower().str.contains(ingredient, na=False)
+            df["ingredients"].str.lower().str.contains(ingredient)
         ]
         
-        if ! results.empty:
+        if not results.empty:
             print(results)
         else:
             print("No recipes found.")
