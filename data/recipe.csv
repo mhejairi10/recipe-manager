@@ -1,5 +1,3 @@
-recipe,ingredients,time,instructions,difficuilty
-hummus,"fbehfe,fihefhe",34,"nedkndfe,fejofe",Easy
-t,"rr,rrr,tt",1,fff,Medium
-tt,tt,1,ttt,Easy
-ee,yy,1,yyy,Easy
+Recipe,Ingredients,Time,Instructions,Difficulty,Category,Servings,Rating
+hhh,"jj,kkkqq",1,hhh,Easy,Breakfast,1,3
+Streamlit is fun,ff,1,gg,Easy,Breakfast,1,3
