@@ -47,7 +47,7 @@ def view_cooking_history():
     return df[["Recipe", "Cooked Date"]]
 
 def update_cooked_date(recipe_name):
-    #this function updates the oldest recipe by date with today's date if the user want to cook it today
+    #this function updates the oldest recipe by date with today's date if the user want to cook it todayf
     df = pd.read_csv(CSV_FILE)
     today = datetime.today().strftime("%Y-%m-%d")
     df.loc[df["Recipe"] == recipe_name, "Cooked Date"] = today
