@@ -1,35 +1,26 @@
 import pandas as pd
 import os
+import re
 
 CSV_FILE = "data/recipe.csv"
-# def new_recipe():
-#     name = input("Enter the name of the recipe: ")
-#     ingredients = input("Enter the list of  ingredients in the recipe, list in commas seperatly e.g. (potato,cheese,olive oil):")
-#     time = int(input("Enter the number of minutes to prepare it: "))
-#     cooking = input("Explain the cooking instructions: ")
-#     level = input("how Difficuilt it is?(Easy, Medium, Hard): ")
 
-#     dict1 = [{ "recipe" : name, "ingredients" : ingredients, "time" : time, "instructions" : cooking, "difficuilty" : level}]
-#     df = pd.DataFrame(dict1)
 
-#     write_data_to_csv(df, "./data/recipe.csv")
-
-print(CSV_FILE)
-
-def save_recipe(name, ingredients, time, instructions, difficulty):
+def save_recipe(name, ingredients, time, instructions, difficulty, category, servings,rating):
     new_data = pd.DataFrame([{
-        "recipe": name,
-        "ingredients": ingredients,
-        "time": time,
-        "instructions": instructions,
-        "difficulty": difficulty
+        "Recipe": name,
+        "Ingredients": ingredients,
+        "Time": time,
+        "Instructions": instructions,
+        "Difficulty": difficulty,
+        "Category": category,
+        "Servings": servings,
+        "Rating": rating
     }])
-    
+
     if os.path.exists(CSV_FILE):
         new_data.to_csv(CSV_FILE, mode="a", header=False, index=False)
     else:
-        new_data.to_csv(CSV_FILE, index=False) #header=True as defult and mode ="r" as defult 
-
+        new_data.to_csv(CSV_FILE, index=False) #header=True as defult and mode ="r" as defult
 
 def search(ingredient):
     """
@@ -51,39 +42,80 @@ def search(ingredient):
         df = pd.read_csv(CSV_FILE)
         #result containt of all recipe that match the condition
         results = df[
-            df["ingredients"].str.lower().str.contains(ingredient)
+            df["ingredients"].str.lower().str.contains(ingredient.lower())
         ]
-        
-        if not results.empty:
-            st.dataframe(results)
-        else:
-            st.warning("No recipes found.")
-            
-    except :
-        print('cannot read the file')
-
+        return results
+    except FileNotFoundError:
+        return pd.DataFrame()
 
 
 def view_all() :
     df = pd.read_csv(CSV_FILE)
 
     if df.empty:
-        st.warning("Sorry, no recipes found.")
-    else:
-        st.dataframe(df[["recipe", "time"]]) 
+        return None
+    return df[["recipe", "time"]]
 
 
-# def view_all() :
-#     """
-#     prints all recepies name and their preparation time, returns  Created By Ali Mohammed Radhi
-#     """
-#     import pandas as pd
-#     df = pd.read_csv('./recipe.csv')
-#     if df.empty:
-#       print("Sorry, no previous recepies")
-#         # choice = input("Would you like to add a recipe now? (yes/no): ")
-
+def random_select():
     
-#     else:     
-#         filtered = df[['recipe', 'time']]
-#         print(filtered)
+    """
+    chooses a random recipe
+
+    Args:
+       random_select()
+
+    Returns:
+        random recipe
+
+    Member:
+        Mohammed Hejairi
+    """
+    
+    df = pd.read_csv(CSV_FILE)
+
+    if df.empty:
+        return None
+
+    recipe = df.sample(n=1).reset_index(drop=True)
+    return recipe
+
+
+
+def isValidInputName(name):
+    """
+    Check whether the recipe name is valid.
+
+    Args:
+       random_select()
+
+    Returns:
+        random recipe
+
+    Member:
+        
+
+    Rules:
+    - Cannot be empty.
+    - Can contain only letters and spaces.
+    """
+
+    #From the beginning to the end, allow only letters and spaces.
+    pattern = r"^[A-Za-z ]+$"
+    #using .strip() for remove space in beginning and ending "       " return false, without stripe return true
+    return bool(re.fullmatch(pattern, name.strip()))
+    
+def isValidInputIngredient(ingredients):
+    """
+    Validate ingredients.
+
+    Example of valid input:
+        Cheese, Tomato, Olive Oil
+    """
+    #^[A-Za-z] Matches the first ingredient.
+    #(,[A-Za-z ]+)* Repeat this entire group zero or more times.
+    # $ to the end 
+    pattern = r"^[A-Za-z ]+(,[A-Za-z ]+)*$"
+
+    # withotu bool return "None" if not valid, for tranform it to false use bool()
+    return bool(re.fullmatch(pattern, ingredients.strip()))
