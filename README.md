@@ -136,10 +136,9 @@ This project demonstrates:
 
 ## 👥 Team Members
 
-- Team Leader: *Your Name*
-- Member 2
-- Member 3
-- Member 4
+- Team Leader: Mohammed Hejairi
+- Elias Abbas
+- Ali Radhi
 
 ---
 
