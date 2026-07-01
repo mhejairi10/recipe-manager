@@ -66,38 +66,10 @@ Recipe_Manager/
 │
 ├── app.py
 ├── recipe_manager.py
-├── utils.py
 ├── Python Project Guidelines.pdf
 └── README.md
 ```
 
----
-
-## 🚀 Getting Started
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/your-username/Recipe_Manager.git
-```
-
-### 2. Navigate to the project folder
-
-```bash
-cd Recipe_Manager
-```
-
-### 3. Install dependencies
-
-```bash
-pip install pandas
-```
-
-### 4. Run the application
-
-```bash
-python app.py
-```
 
 ---
 
@@ -110,7 +82,8 @@ Recipe Manager
 2. Search Recipe by Ingredient
 3. View All Recipes
 4. Random Recipe Suggestion
-5. Exit
+5. Generate Shopping List
+6. Cooking History
 ```
 
 ---
