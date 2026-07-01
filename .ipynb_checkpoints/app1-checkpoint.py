@@ -13,8 +13,7 @@ menu = st.sidebar.selectbox(
         "Add New Recipe",
         "Search by Ingredient",
         "View All Recipes",
-        "Random Recipe Suggestion",
-        "Cooking History"
+        "Random Recipe Suggestion"
     ] #options
 )
 
@@ -30,14 +29,6 @@ if menu == "Add New Recipe":
     category = st.selectbox("Category", ["Breakfast", "Lunch", "Dinner","Dessert"]) #Add selected box for difficulty field
     servings = st.number_input("Number of Servings", min_value=1)
     rating = st.slider("Rating", 1, 5, 3) 
-    cooked = st.selectbox("Have you cooked it before?", ["Yes","No","I will Cook it Today"])
-    if cooked == "Yes":
-        cooked_date = st.date_input("enter date:")
-    elif cooked == "No":
-        cooked_date = None
-    elif cooked == "I will Cook it Today":
-        cooked_date = st.date_input("")
-        
     
     if st.button("Add Recipe"):
         if not name or not ingredients or not instructions:
@@ -58,8 +49,7 @@ if menu == "Add New Recipe":
                 difficulty,
                 category,
                 servings,
-                rating,
-                cooked_date
+                rating
             )
             st.success("Recipe added successfully!")
 
@@ -70,11 +60,11 @@ elif menu == "Search by Ingredient":
     results= ''
     if st.button("Search"):
         if not rm.isValidInputName(ingredient):
-            st.warning("Ingredients must contain only letters.")
+            st.warning("Ingredients must contain only letters separated by commas.")
         else:
             results = rm.search(ingredient) #call search()
             if not results.empty:
-                st.dataframe(results,hide_index=True)
+                st.dataframe(results)
             else:
                 st.warning("No recipes found.")
 
@@ -86,7 +76,7 @@ elif menu == "View All Recipes":
     results = rm.view_all()
 
     if not (results is None):
-        st.dataframe(results,hide_index=True)
+        st.dataframe(results)
     else:
         st.warning("Sorry, no recipes found.")
 
@@ -96,37 +86,6 @@ elif menu == "Random Recipe Suggestion":
     results = rm.random_select()
 
     if results is not None:
-        st.dataframe(results,hide_index=True)
+        st.dataframe(results)
     else:
         st.warning("Sorry, no recipes found.")
-
-elif menu == "Generate Shopping List":
-    df = pd.read_csv("./data/recipe.csv")
-
-    selected_recipes = st.multiselect("Choose recipes",list(df["recipe"]))
-
-    if st.button("Generate Shopping List"):
-        shopping_list = rm.generate_shopping_list(selected_recipes)
-
-    st.write("### Shopping List")
-
-    for item in shopping_list:
-        st.write("- " + item)
- 
-elif menu =="Cooking History":
-    st.header("Cooking History")
-
-    results = rm.view_cooking_history()
-    st.dataframe(results, hide_index=True)
-
-    st.header("Suggestion")
-
-    suggest = rm.suggest_by_history()
-    st.dataframe(suggest, hide_index=True)
-
-    recipe_name = suggest["Recipe"].iloc[0]
-    if st.button("I will cook this today"):
-        rm.update_cooked_date(recipe_name)
-        st.success("Cooking date updated!")
-
-        

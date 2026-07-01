@@ -1,13 +1,11 @@
 import pandas as pd
 import os
 import re
-from datetime import datetime
-
 
 CSV_FILE = "data/recipe.csv"
 
 
-def save_recipe(name, ingredients, time, instructions, difficulty, category, servings,rating,cooked_date = None):
+def save_recipe(name, ingredients, time, instructions, difficulty, category, servings,rating):
     new_data = pd.DataFrame([{
         "Recipe": name,
         "Ingredients": ingredients,
@@ -16,8 +14,7 @@ def save_recipe(name, ingredients, time, instructions, difficulty, category, ser
         "Difficulty": difficulty,
         "Category": category,
         "Servings": servings,
-        "Rating": rating,
-        "Cooked Date": cooked_date
+        "Rating": rating
     }])
 
     if os.path.exists(CSV_FILE):
@@ -45,7 +42,7 @@ def search(ingredient):
         df = pd.read_csv(CSV_FILE)
         #result containt of all recipe that match the condition
         results = df[
-            df["Ingredients"].str.lower().str.contains(ingredient.lower())
+            df["ingredients"].str.lower().str.contains(ingredient.lower())
         ]
         return results
     except FileNotFoundError:
@@ -57,7 +54,7 @@ def view_all() :
 
     if df.empty:
         return None
-    return df[["Recipe", "Time"]]
+    return df[["recipe", "time"]]
 
 
 def random_select():
@@ -122,41 +119,3 @@ def isValidInputIngredient(ingredients):
 
     # withotu bool return "None" if not valid, for tranform it to false use bool()
     return bool(re.fullmatch(pattern, ingredients.strip()))
-
-def generate_shopping_list(selected_recipes):
-    df = pd.read_csv("./data/recipe.csv")
-    shopping_list = []
-
-    for i in selected_recipes:
-        row = df[df["Recipe"] == i]
-        ingredients = row["Ingredients"].iloc[0].split(",")
-
-        for j in ingredients:
-            shopping_list.append(j.strip())
-
-    return shopping_list
-
-def suggest_by_history():
-    df = pd.read_csv(CSV_FILE)
-    uncooked_recipes = df[df["Cooked Date"].isna()]
-    if uncooked_recipes.empty:
-        oldest_suggest = df[["Recipe","Cooked Date"]].sort_values("Cooked Date").head(1)
-        return oldest_suggest
-    else:
-        suggested_uncooked = df[df["Cooked Date"].isna()][["Recipe","Cooked Date"]].head(1)
-        return suggested_uncooked
-
-def view_cooking_history():
-    df = pd.read_csv(CSV_FILE)
-
-    if df.empty:
-        return None
-    return df[["Recipe", "Cooked Date"]]
-
-def update_cooked_date(recipe_name):
-    df = pd.read_csv(CSV_FILE)
-    today = datetime.today().strftime("%Y-%m-%d")
-    df.loc[df["Recipe"] == recipe_name, "Cooked Date"] = today
-    df.to_csv(CSV_FILE, index=False)
-    
-    
