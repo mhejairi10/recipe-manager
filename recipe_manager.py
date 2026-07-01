@@ -6,9 +6,6 @@ from datetime import datetime
 CSV_FILE = "data/recipe.csv"
 
 
-<<<<<<< Updated upstream
-def save_recipe(name, ingredients, time, instructions, difficulty, category, servings,rating):
-=======
 def save_recipe(name, ingredients, time, instructions, difficulty, category, servings,rating,cooked_date):
     """
     Sava/Add recipe into recipe.csv file
@@ -23,7 +20,6 @@ def save_recipe(name, ingredients, time, instructions, difficulty, category, ser
         Mohammed Hejairi
     """
 
->>>>>>> Stashed changes
     new_data = pd.DataFrame([{
         "Recipe": name,
         "Ingredients": ingredients,
@@ -61,19 +57,32 @@ def search(ingredient):
         df = pd.read_csv(CSV_FILE)
         #result containt of all recipe that match the condition
         results = df[
-            df["ingredients"].str.lower().str.contains(ingredient.lower())
+            df["Ingredients"].str.lower().str.contains(ingredient.lower())
         ]
         return results
     except FileNotFoundError:
         return pd.DataFrame()
 
 
-def view_all() :
+def view_all():
+    """
+    view_all into recipe(s) that in recipe.csv
+    
+    Args:
+        view_all():
+    
+    Returns:
+        dataFrame content of Recipe and Time
+        
+    Member: 
+        Ali Radhi
+    """
+
     df = pd.read_csv(CSV_FILE)
 
     if df.empty:
         return None
-    return df[["recipe", "time"]]
+    return df[["Recipe", "Time"]]
 
 
 def random_select():
@@ -95,10 +104,37 @@ def random_select():
 
     if df.empty:
         return None
-
-    recipe = df.sample(n=1).reset_index(drop=True)
+    #sample take 1 sample dataset as defult
+    recipe = df.sample()
     return recipe
 
+def generate_shopping_list(selected_recipes):
+    """
+    Generate shoping list content of require ingredient(s) for selected recipe(s)
+
+    Args:
+       generate_shopping_list(selected_recipes)
+
+    Returns:
+        shoping_list content of require ingredient(s) for selected recipe(s)
+
+    Member:
+        Mohammed Hejairi
+    """
+
+    df = pd.read_csv(CSV_FILE)
+    shopping_list = []
+
+    for recipe in selected_recipes:
+        row = df[df["Recipe"] == recipe]
+        #Assume we have two Recipe: Pizza we will have error
+        ingredients = row["Ingredients"].iloc[0].split(",")
+
+        for item in ingredients:
+            shopping_list.append(item.strip())
+
+    return shopping_list
+    
 
 
 def isValidInputName(name):
@@ -106,12 +142,14 @@ def isValidInputName(name):
     Check whether the recipe name is valid.
 
     Args:
-       random_select()
+       isValidInputName(name)
 
     Returns:
-        random recipe
+        True if name is valid, otherwise False
 
     Member:
+        Elias Abbas
+        
         
 
     Rules:
@@ -130,7 +168,17 @@ def isValidInputName(name):
     
 def isValidInputIngredient(ingredients):
     """
-    Validate ingredients.
+    
+    Check whether the recipe Ingredient is valid.
+
+    Args:
+       isValidInputIngredient(ingredients)
+
+    Returns:
+        True if Ingredient is valid, otherwise False
+
+    Member:
+        Elias Abbas
 
     Example of valid input:
         Cheese, Tomato, Olive Oil
