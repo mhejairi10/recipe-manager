@@ -13,11 +13,17 @@ menu = st.sidebar.selectbox(
         "Add New Recipe",
         "Search by Ingredient",
         "View All Recipes",
+<<<<<<< Updated upstream:.ipynb_checkpoints/app1-checkpoint.py
         "Random Recipe Suggestion"
+=======
+        "Random Recipe Suggestion",
+        "Generate Shopping List",
+        "Cooking History"
+>>>>>>> Stashed changes:app.py
     ] #options
 )
 
-#Transform to Addd New Recipe mode (in same page)
+#Transform to Add New Recipe mode (in same page)
 if menu == "Add New Recipe":
     st.header("Add New Recipe") #Write header for the group
 
@@ -29,7 +35,20 @@ if menu == "Add New Recipe":
     category = st.selectbox("Category", ["Breakfast", "Lunch", "Dinner","Dessert"]) #Add selected box for difficulty field
     servings = st.number_input("Number of Servings", min_value=1)
     rating = st.slider("Rating", 1, 5, 3) 
+<<<<<<< Updated upstream:.ipynb_checkpoints/app1-checkpoint.py
     
+=======
+    cooked = st.selectbox("Have you cooked it before?", ["Yes","No","I will Cook it Today"])
+    if cooked == "Yes":
+        cooked_date = st.date_input("enter date:")
+    elif cooked == "No":
+        cooked_date = None
+    elif cooked == "I will Cook it Today":
+        cooked_date = st.date_input("")
+
+
+    #If clicked Add Recipe button then:
+>>>>>>> Stashed changes:app.py
     if st.button("Add Recipe"):
         if not name or not ingredients or not instructions:
             st.warning("Please fill all required fields.")
@@ -49,7 +68,8 @@ if menu == "Add New Recipe":
                 difficulty,
                 category,
                 servings,
-                rating
+                rating,
+                cooked_date
             )
             st.success("Recipe added successfully!")
 
@@ -59,18 +79,29 @@ elif menu == "Search by Ingredient":
     ingredient = st.text_input("Enter ingredient")  #Add text area for target ingredient field
     results= ''
     if st.button("Search"):
+        #if user write invalid name
         if not rm.isValidInputName(ingredient):
+<<<<<<< Updated upstream:.ipynb_checkpoints/app1-checkpoint.py
+            st.warning("Ingredients must contain only letters separated by commas.")
+=======
+            #show this warning message: 
             st.warning("Ingredients must contain only letters.")
+>>>>>>> Stashed changes:app.py
         else:
-            results = rm.search(ingredient) #call search()
+             #call search() funtion and save return value in 'results' variable
+            results = rm.search(ingredient)
             if not results.empty:
+                #Show results as data frame form in the page
                 st.dataframe(results)
             else:
                 st.warning("No recipes found.")
 
+<<<<<<< Updated upstream:.ipynb_checkpoints/app1-checkpoint.py
         
 
 
+=======
+>>>>>>> Stashed changes:app.py
 elif menu == "View All Recipes":
     st.header("All Recipes")
     results = rm.view_all()
@@ -88,4 +119,47 @@ elif menu == "Random Recipe Suggestion":
     if results is not None:
         st.dataframe(results)
     else:
+<<<<<<< Updated upstream:.ipynb_checkpoints/app1-checkpoint.py
         st.warning("Sorry, no recipes found.")
+=======
+        #otherwise show this warning message:
+        st.warning("Sorry, no recipes found.")
+
+elif menu == "Generate Shopping List":
+    #read csv file
+    df = pd.read_csv(CSV_FILE)
+
+    #you can choice multi-options by using st.multiselect
+    selected_recipes = st.multiselect("Choose recipes",list(df["Recipe"]))
+
+    #if clicked Generate Shopping List then:
+    if st.button("Generate Shopping List"):
+        #call generate_shoping_list() funtion and save return value in shoping_list variable
+        shopping_list = rm.generate_shopping_list(selected_recipes)
+
+        #write Shopping List in the page 
+        st.write("Shopping List")
+        
+        for i in shopping_list:
+            #write require ingredients to selected recipes
+            #'-' means write ingredients in Listed form 
+            st.write("- " + i)
+
+
+elif menu =="Cooking History":
+    st.header("Cooking History")
+    # call a function for the cooking history
+    results = rm.view_cooking_history()
+    st.dataframe(results, hide_index=True)
+
+    st.header("Suggestion")
+    #call a function for the suggestions
+    suggest = rm.suggest_by_history()
+    st.dataframe(suggest, hide_index=True)
+
+    recipe_name = suggest["Recipe"].iloc[0]
+    if st.button("I will cook this today"):
+        #updates the cooked date
+        rm.update_cooked_date(recipe_name)
+        st.success("Cooking date updated!")
+>>>>>>> Stashed changes:app.py

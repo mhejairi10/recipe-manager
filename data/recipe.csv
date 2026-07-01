@@ -1,5 +1,29 @@
+<<<<<<< Updated upstream
 recipe,ingredients,time,instructions,difficuilty
 hummus,"fbehfe,fihefhe",34,"nedkndfe,fejofe",Easy
 t,"rr,rrr,tt",1,fff,Medium
 tt,tt,1,ttt,Easy
 ee,yy,1,yyy,Easy
+=======
+Recipe,Ingredients,Time,Instructions,Difficulty,Category,Servings,Rating,Cooked Date
+Spaghetti Carbonara,"Pasta, Egg, Guanciale, Pecorino Romano, Pepper",20,Boil pasta fry guanciale whisk egg and cheese combine off heat,Easy,Lunch,4,5,2026-05-15
+Chicken Tikka Masala,"Chicken, Yogurt, Tomato, Cream, Garam Masala, Ginger",45,Marinate chicken grill simmer in spiced tomato cream sauce,Medium,Dinner,4,4,2026-06-20
+Pancake Stack,"Flour, Milk, Egg, Butter, Sugar, Baking Powder",15,Whisk dry and wet ingredients cook on hot griddle until bubbly,Easy,Breakfast,3,5,2026-07-01
+Chocolate Lava Cake,"Chocolate, Butter, Egg, Sugar, Flour",25,Melt chocolate and butter beat eggs with sugar bake until soft center,Hard,Dessert,2,5,2026-04-10
+Caesar Salad,"Romaine Lettuce, Croutons, Parmesan, Caesar Dressing",10,Toss lettuce with dressing top with croutons and shaved cheese,Easy,Lunch,2,4,2026-06-01
+Beef Stir Fry,"Beef, Broccoli, Soy Sauce, Garlic, Ginger, Cornstarch",20,Sear sliced beef stir fry broccoli toss together with sauce,Medium,Dinner,3,4,
+French Toast,"Bread, Egg, Milk, Cinnamon, Vanilla, Butter",15,Whisk eggs milk spices dip bread fry in butter until golden,Easy,Breakfast,2,4,2026-01-20
+Beef Wellington,"Beef Tenderloin, Mushrooms, Puff Pastry, Prosciutto",120,Sear beef wrap in mushroom duxelles prosciutto and pastry bake,Hard,Dinner,6,5,
+Greek Yogurt Bowl,"Yogurt, Honey, Walnuts, Berries, Chia Seeds",5,Scoop yogurt into bowl drizzle with honey top with nuts and fruit,Easy,Breakfast,1,4,2026-06-28
+Vegetable Lasagna,"Pasta Sheets, Ricotta, Mozzarella, Tomato Sauce, Zucchini",60,Layer pasta sauce vegetables and cheeses bake until bubbly,Medium,Dinner,8,4,2026-03-14
+Apple Crisp,"Apples, Oats, Brown Sugar, Cinnamon, Butter",40,Slice apples top with oat crumbled mixture bake until golden,Easy,Dessert,6,5,
+Chicken Alfredo,"Fettuccine, Chicken Breast, Cream, Parmesan, Garlic",30,Cook pasta sear chicken simmer cream and cheese combine,Easy,Dinner,4,4,2026-05-30
+Guacamole,"Avocado, Lime, Onion, Cilantro, Tomato, Jalapeno",10,Mash avocados stir in finely chopped aromatics season with lime,Easy,Breakfast,4,5,2026-06-15
+Mushroom Risotto,"Arborio Rice, Mushrooms, Broth, White Wine, Onion, Butter",45,Saute mushrooms toast rice gradually add warm broth stir constantly,Hard,Lunch,3,4,2026-02-28
+Berry Smoothie,"Banana, Strawberries, Blueberries, Yogurt, Milk",5,Place all ingredients in a blender blend on high until smooth,Easy,Breakfast,1,3,2026-07-01
+Tacos Al Pastor,"Pork Shoulder, Pineapple, Onion, Cilantro, Tortillas",90,Marinate pork grill with pineapple slice and serve on tortillas,Hard,Dinner,5,5,
+Caprese Salad,"Tomato, Mozzarella, Basil, Olive Oil, Balsamic",10,Slice tomatoes and mozzarella alternate on plate top with basil,Easy,Lunch,2,4,2026-06-10
+Chocolate Chip Cookies,"Flour, Butter, Sugar, Brown Sugar, Chocolate Chips",25,Cream butter and sugars mix dry ingredients fold chips bake,Easy,Dessert,12,5,2025-12-25
+Lentil Soup,"Lentils, Carrots, Celery, Onion, Tomato Paste, Cumin",40,Saute vegetables add lentils and broth simmer until tender,Easy,Lunch,6,4,
+Ribeye Steak,"Ribeye Steak, Garlic, Rosemary, Butter",20,Season steak heavily sear in smoking hot pan baste with butter,Medium,Dinner,2,5,2026-04-22
+>>>>>>> Stashed changes
