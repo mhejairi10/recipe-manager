@@ -11,6 +11,7 @@
 import streamlit as st
 import pandas as pd
 import recipe_manager as rm
+from datetime import date
 
 
 #Put title for website
@@ -45,10 +46,12 @@ if menu == "Add New Recipe":
     srating = st.feedback("stars") 
     if srating is not None:
         rating = srating + 1
+    else:
+        rating = None
     cooked = st.selectbox("Have you cooked it before?", ["Yes","No","I will Cook it Today"])
     
     if cooked == "Yes":
-        cooked_date = st.date_input("enter date:")
+        cooked_date = st.date_input("Enter date",date.today(),max_value = date.today())
     elif cooked == "No":
         cooked_date = None
     elif cooked == "I will Cook it Today":
