@@ -46,6 +46,7 @@ if menu == "Add New Recipe":
     if srating is not None:
         rating = srating + 1
     cooked = st.selectbox("Have you cooked it before?", ["Yes","No","I will Cook it Today"])
+    
     if cooked == "Yes":
         cooked_date = st.date_input("enter date:")
     elif cooked == "No":
