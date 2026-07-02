@@ -205,6 +205,16 @@ def update_cooked_date(recipe_name):
     df.loc[df["Recipe"] == recipe_name, "Cooked Date"] = today
     df.to_csv(CSV_FILE, index=False)
 
+def sort_rating():
+    df = pd.read_csv(CSV_FILE)
+
+    if df.empty:
+        return None
+
+    # Sort from highest rating to lowest
+    df = df.sort_values(by="Rating", ascending=False)
+    return df
+    
 def isValidInputName(name):
     """
     Check whether the recipe name is valid.

@@ -27,7 +27,8 @@ menu = st.sidebar.selectbox(
         "View All Recipes",
         "Random Recipe Suggestion",
         "Generate Shopping List",
-        "Cooking History"
+        "Cooking History",
+        "Sort by Rating"
     ] #options
 )
 
@@ -172,3 +173,13 @@ elif menu =="Cooking History":
         #updates the cooked date
         rm.update_cooked_date(recipe_name)
         st.success("Cooking date updated!")
+
+elif menu == "Sort by Rating":
+    st.header("Sort by Rating")
+
+    results = rm.sort_rating()
+
+    if results is not None:
+        st.dataframe(results, hide_index=True)
+    else:
+        st.warning("Sorry, no recipes found.")
