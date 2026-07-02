@@ -41,7 +41,10 @@ if menu == "Add New Recipe":
     difficulty = st.selectbox("Difficulty", ["Easy", "Medium", "Hard"]) #Add selected box for difficulty field
     category = st.selectbox("Category", ["Breakfast", "Lunch", "Dinner","Dessert"]) #Add selected box for difficulty field
     servings = st.number_input("Number of Servings", min_value=1)
-    rating = st.slider("Rating", 1, 5, 3) 
+    st.markdown("Rating")
+    srating = st.feedback("stars") 
+    if srating is not None:
+        rating = srating + 1
     cooked = st.selectbox("Have you cooked it before?", ["Yes","No","I will Cook it Today"])
     if cooked == "Yes":
         cooked_date = st.date_input("enter date:")
@@ -98,7 +101,7 @@ elif menu == "Search by Ingredient":
             results = rm.search(ingredient)
             if not results.empty:
                 #Show results as data frame form in the page
-                st.dataframe(results)
+                st.dataframe(results,hide_index=True)
             else:
                 st.warning("No recipes found.")
 
@@ -123,7 +126,7 @@ elif menu == "Random Recipe Suggestion":
     #if result is not None then:
     if results is not None:
         #show the result as data frame in the page 
-        st.dataframe(results)
+        st.dataframe(results,hide_index=True)
     else:
         #otherwise show this warning message:
         st.warning("Sorry, no recipes found.")
